@@ -1,0 +1,47 @@
+<section class="main">
+  <header>
+    <h4 style="color: antiquewhite;">Chat</h4>
+    <a style="color: antiquewhite; " href="/userprofile" >Disconnect</a>
+    
+
+  </header>
+  
+  <section *ngIf="!currentUser">
+    <chat-name-popup (onUserNameChange)="handleName($event)"></chat-name-popup>
+  </section>
+  <section *ngIf="currentUser" class="chat-holder">
+    <article>
+      <chat-window
+        [selectedUser]="selectedUser"
+        [messages]="messages"
+        (onMessage)="handleMessage($event)"
+      ></chat-window>
+    </article>
+    <aside>
+      <users-list
+        [usersList]="usersList"
+        (onUserSelect)="handleUserSelect($event)"
+      ></users-list>
+    </aside>
+  </section>
+
+  <!-- <section *ngIf="currentUser" class="chat-holder">
+    <article>
+      <app-private-chat
+        [selectedUser]="selectedUser"      
+        [pmessages]="pmessages"
+        (onMessage)="handleMessage($event)"
+        
+      ></app-private-chat>
+    </article>
+    <aside>
+      <users-list
+        [usersList]="usersList"
+        (onUserSelect)="handleUserSelect($event)"
+      ></users-list>
+    </aside>
+  </section> -->
+
+
+  
+</section>
